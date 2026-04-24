@@ -1,0 +1,56 @@
+:root {
+  --main-color: rgb(74, 239, 59);
+}
+
+.body {
+  box-sizing: border-box;
+}
+.container-nav {
+  background-color: var(--main-color);
+  height: 60px;
+  top: 0;
+  position: sticky;
+  margin-bottom: 40px;
+  min-width: 768px;
+}
+
+.container-menu {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.item {
+  padding-top: 20px;
+}
+
+.item:hover {
+  color: rgb(255, 4, 0);
+}
+
+.container-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.container-main:nth-child(1) {
+  color: green;
+}
+
+/*
+.button {
+    position: fixex;
+    bottom: 0;
+    left: 0;
+}
+*/
+
+/*@media {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+me quedará pendiente RESPONSIVE (768px) (1,5 punts)
+Ha de fer el canvi de comportament seguint el segon mockup.
+Ha de deixar de tenir l’espai amb el grid .
+*/
