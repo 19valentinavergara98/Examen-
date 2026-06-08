@@ -2,55 +2,164 @@
   --main-color: rgb(74, 239, 59);
 }
 
-.body {
-  box-sizing: border-box;
+html {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 25px;
 }
+
+body {
+  margin: 0; /*elimina el espacio de arribadel body y de los lados*/
+  padding: 0;
+}
+
 .container-nav {
   background-color: var(--main-color);
-  height: 60px;
-  top: 0;
+  padding: 20px 0;
   position: sticky;
-  margin-bottom: 40px;
-  min-width: 768px;
+  top: 0; /*para que siempre esté pegado arriba del todo*/
+  z-index: 1;
 }
 
 .container-menu {
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.5em;
 }
 
 .item {
-  padding-top: 20px;
+  padding: 20px 0;
 }
 
 .item:hover {
   color: rgb(255, 4, 0);
 }
 
-.container-main {
+.grid-container {
+  margin: 20px auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 80%;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    "el1 el2 el2"
+    "el1 el3 el4"
+    "el5 el5 el4";
 }
 
-.container-main:nth-child(1) {
-  color: green;
+.el {
+  padding: 20px;
+}
+
+.el1 {
+  grid-area: el1;
+  background-color: rgb(65, 217, 65);
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.el2 {
+  grid-area: el2;
+  background-color: rgb(85, 85, 188);
+  text-align: center;
+}
+
+.el3 {
+  grid-area: el3;
+  background-color: rgb(225, 135, 103);
+  text-align: center;
+}
+
+.el3 img {
+  width: 100%;
+}
+.el4 {
+  grid-area: el4;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.el5 {
+  grid-area: el5;
+  background-color: rgb(210, 119, 134);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.el6 {
+  background-color: blue;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+}
+
+@media (max-width: 780px) {
+  /* MENU VERTICAL */
+
+  .container-menu {
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 20px;
+  }
+
+  /* OCULTAR ELEMENT 6 */
+
+  .el6 {
+    display: none;
+  }
+
+  /* GRID RESPONSIVE */
+
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas:
+      "el5 el5"
+      "el3 el3"
+      "el1 el2"
+      "el4 el2";
+  }
 }
 
 /*
-.button {
-    position: fixex;
-    bottom: 0;
-    left: 0;
-}
-*/
+Visualmente queda:
+| Element 1 |
+| Element 4 |
 
-/*@media {
-    display: flex;
-    flex-wrap: wrap;
-    
+| Element 2 | Element 5 |
+| Element 3 | Element 5 |
+Importante
+
+Tu nomenclatura actual es:
+
+Elemento visual	Clase
+Element 2 verde	.el1
+Element 5 azul	.el2
+Element 4 naranja	.el3
+Element 3 morado	.el4
+Element 1 rosa	.el5
+
+Por eso:
+
+"el5 el5"
+
+es el rosa (Element 1).
+
+Lo único que te faltaría
+
+Quizá agregar:
+
+.grid-container {
+  width: 95%;
 }
-me quedará pendiente RESPONSIVE (768px) (1,5 punts)
-Ha de fer el canvi de comportament seguint el segon mockup.
-Ha de deixar de tenir l’espai amb el grid .
 */
